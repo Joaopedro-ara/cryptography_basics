@@ -5,11 +5,11 @@ def generate_keystream(lenght:int)->list: # new funcrion to generate the keystre
     for i in range(lenght):
         keystream.append(secrets.randbelow(256))
     return keystream # return the complete keystream list back whre the function was called
-def xor_cipher(text:str,keystream:list)->str:
+def xor_cipher(data:bytes,keystream:list)->str:
     #function take a text string a keystream lis as input and its performs YOR /en/decryption return a result as string
     result="" #iniutialize an empty string to store the final input
-    for i in range(len(text)): # lopp trough each charater in the text
-        char=text[i]
+    for i in range(len(data)): # lopp trough each charater in the text
+        char=data[i]
         key_byte=keystream[i]
         xored_value=ord(char)^key_byte #convert character to number (ord), then XOR it with the key byte
         result+=chr(xored_value) # convert the Xor rresult back to a character and add it to the result string
